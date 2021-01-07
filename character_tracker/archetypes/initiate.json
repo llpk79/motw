@@ -1,0 +1,110 @@
+{
+    "moves": {
+        "1": "When you are in good standing with your Sect, at the beginning of each mystery, roll +Charm. On a 10+ they provide some useful info or help in the field. On a 7-9 you get a mission associated with the mystery, and if you do it you’ll get some info or help too. On a miss, they ask you to do something bad. If you fail a mission or refuse an order, you’ll be in trouble with the Sect until you atone.",
+        "2": "Ancient Fighting Arts: When using an old-fashioned hand weapon, you inflict +1 harm and get +1 whenever you roll protect someone.",
+        "3": "Mystic: Every time you successfully use magic, take +1 forward.",
+        "4": "Fortunes: The Sect has ancient prophecies or divination techniques to predict the future. Once per mystery, you may use them. If you look at what the future holds, roll +Weird. On a 10+ hold 3, and on a 7-9 hold 1. On a miss, you get bad information and the Keeper decides how that affects you. Spend your hold to: • have a useful object ready. • be somewhere you are needed, just in time. • take +1 forward, or give +1 forward to another hunter. • retroactively warn someone about an attack, so that it doesn’t happen.",
+        "5": "Sacred Oath: You may bind yourself to a single goal, forsaking something during your quest (e.g. speech, all sustenance but bread and water, alcohol, lying, sex, etc). Get the Keeper’s agreement on this—it should match the goal in importance and difficulty. While you keep your oath and work towards your goal, mark experience at the end of every session and get +1 on any rolls that directly help achieve the goal. If you break the oath, take -1 ongoing until you have atoned.",
+        "6": "Mentor: You have a mentor in the Sect: name them. When you contact your mentor for info, roll +Sharp. On a 10+, you get an answer to your question, no problem. On a 7-9 you choose: they’re either busy and can’t help, or they answer the question but you owe a favour. On a miss, your question causes trouble.",
+        "7": "Apprentice: You have an apprentice: name them. Your job is to teach them the Sect’s ways. They count as an ally: subordinate (motivation: to follow your instructions to the letter).",
+        "8": "Helping Hand: When you successfully help out another hunter, they get +2 instead of the usual +1.",
+        "9": "That Old Black Magic: When you use magic, you can ask a question from the investigate a mystery move as your effect.",
+        "limit": "3"
+    },
+    "sect": { 
+        "good": {
+            "1": "Knowledgeable",
+            "2": "Ancient lore",
+            "3": "Magical lore",
+            "4": "Fighting arts",
+            "5": "Modernised",
+            "6": "Chapters everywhere",
+            "7": "Secular power",
+            "8": "Flexible tactics",
+            "9": "Open hierarchy",
+            "10": "Integrated in Society",
+            "11": "Rich",
+            "12": "Nifty gadgets",
+            "13": "Magical items",
+            "limit": "2"
+        },
+        "bad": {
+            "1": "Dubious motives",
+            "2": "Tradition-bound",
+            "3": "Short-sighted",
+            "4": "Paranoid and secretive",
+            "5": "Closed hierarchy",
+            "6": "Factionalised",
+            "7": "Strict laws",
+            "8": "Mystical oaths",
+            "9": "Total obedience",
+            "10": "Tyrannical leaders",
+            "11": "Obsolete gear",
+            "12": "Poor",
+            "13": "",
+            "limit": "1"
+        },
+    },
+    "gear": {    
+        "old_fashioned": {
+            "1": "Sword (2-harm hand messy)",
+            "2": "Axe (2-harm hand messy)",
+            "3": "Big sword (3-harm hand messy heavy)",
+            "4": "Big axe (3-harm hand messy slow heavy)",
+            "5": "Silver knive (1-harm hand silver)",
+            "6": "Fighting sticks (1-harm hand quick)",
+            "7": "Spear (2-harm hand close)",
+            "8": "Mace (2-harm hand messy)",
+            "9": "Crossbow (2-harm close slow)",
+            "limit": "3"
+        },
+        "modern": {
+            "1": ".38 revolver: (2-harm close reload loud)",
+            "2": "9mm: (2-harm close loud)",
+            "3": "Sniper rifle (3-harm far)",
+            "4": "Magnum (3-harm close reload loud)",
+            "5": "Shotgun (3-harm close messy)",
+            "limit": "2"
+        },
+    },
+    "improvements": {
+        "1": "Get +1 Sharp, max +2",
+        "2": "Get +1 Tough, max +2",
+        "3": "Get +1 Cool, max +2",
+        "4": "Get +1 Weird, max +3",
+        "5": "Take another Initiate move",
+        "6": "Take another Initiate move",
+        "7": "Get command of your chapter of the Sect",
+        "8": "Get a Sect team under your command",
+        "9": "Take a move from another playbook",
+        "10": "Take a move from another playbook"
+    },
+    "advanced_improvements": {
+        "1": "Get +1 to any rating, max +3.",
+        "2": "Become the leader, or effective leader, of the whole Sect.",
+        "3": "Change this hunter to a new type",
+        "4": "Create a second hunter to play as well as this one.",
+        "5": "Mark two of the basic moves as advanced.",
+        "6": "Mark another two of the basic moves as advanced.",
+        "7": "Retire this hunter to safety."
+    },
+    "luck": {
+        "1": "When you spend a point of Luck, you discover something happening now is related to something you were involved in years ago."
+    },
+    "keys": {
+        "moves": {
+            "act_under_pressure": ["1", "2", "3", "7", "8"],
+            "kick_some_ass": [],
+            "help_out": ["8"],
+            "investigate": ["9"],
+            "protect": ["2"],
+            "manipulate": [],
+            "read_a_situation": [],
+            "magic": ["3","9"],
+            "big_magic": [],
+            "recovery": []
+        },
+        "haven": {          
+        }
+    }
+}
