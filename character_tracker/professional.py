@@ -50,7 +50,7 @@ class Professional(Character):
         else:
             gear_chooser("weapon", self.info["gear"])
 
-    def remind_me(self):
+    def remind_me(self) -> None:
         output = {
             "moves": {},
             "gear": {},
@@ -74,3 +74,16 @@ class Professional(Character):
             },
             depth=1,
         )
+
+    def show_helpful_stuff(self, move: str) -> dict:
+        output = {}
+        move_keys = [int(key) for key in self.info["keys"]["moves"][move]]
+        for move_key in move_keys:
+            if move_key in self.moves:
+                title, _, description = self.info["moves"][str(move_key)].partition(":")
+                output[title] = description
+        if not output:
+            output = (
+                "You don't have any Expert moves or Haven options to help with this."
+            )
+        return output
