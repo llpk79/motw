@@ -31,6 +31,39 @@ class Character(object):
         self.skills = ["charm", "cool", "sharp", "tough", "weird"]
         self.roller = Roller
 
+    def set_skill_levels(self):
+        for skill in self.skills:
+            if skill == "charm":
+                while True:
+                    level = get_int_input(skill + " level?")
+                    self.charm = level
+                    if self._charm is not None:
+                        break
+            elif skill == "cool":
+                while True:
+                    level = get_int_input(skill + " level?")
+                    self.cool = level
+                    if self.cool is not None:
+                        break
+            elif skill == "sharp":
+                while True:
+                    level = get_int_input(skill + " level?")
+                    self.sharp = level
+                    if self.sharp is not None:
+                        break
+            elif skill == "tough":
+                while True:
+                    level = get_int_input(skill + " level?")
+                    self.tough = level
+                    if self.tough is not None:
+                        break
+            elif skill == "weird":
+                while True:
+                    level = get_int_input(skill + " level?")
+                    self.weird = level
+                    if self.weird is not None:
+                        break
+
     @property
     def charm(self):
         return self._charm
@@ -126,62 +159,6 @@ class Character(object):
         else:
             self._sharp = value
 
-    def get_move_info(self, score: [int, None], move: str):
-        if self.unstable_injury:
-            self.harm += 1
-            print(
-                f"Damn this unstable wound! My harm is now {self.harm}!\nAnd it's getting worse!\n"
-            )
-        if score is None:
-            return basic_moves[move]["msg"]
-        if score < 7:
-            self.experience += 1
-            if self.experience >= 5:
-                self.level_up()
-                self.experience = 0
-            return basic_moves[move]["miss_msg"]
-        elif 7 <= score < 10:
-            return basic_moves[move]["hit_msg"]
-        elif 10 <= score < 12:
-            return basic_moves[move]["big_hit_msg"]
-        elif 12 <= score:
-            return basic_moves[move]["adv_hit_msg"]
-
-    def show_helpful_stuff(self, move: str):
-        output = {}
-        move_keys = [int(key) for key in self.info["keys"]["moves"][move]]
-        for move_key in move_keys:
-            if move_key in self.moves:
-                title, _, description = self.info["moves"][str(move_key)].partition(":")
-                output[title] = description
-        if self.info["keys"]["haven"]:
-            haven_keys = [int(key) for key in self.info["keys"]["haven"][move]]
-            for haven_key in haven_keys:
-                if haven_key in self.haven:
-                    title, _, description = self.info["haven"][str(haven_key)].partition(":")
-                    output[title] = description
-        if not output:
-            output = (
-                "You don't have any Expert moves or Haven options to help with this."
-            )
-        return output
-
-    def make_a_move(self, move: str, skill: str, skill_level: int) -> (str, str, dict):
-        result, roller_output = self.roller(skill, skill_level).main()
-        msg_output = self.get_move_info(result, move)
-        help_output = self.show_helpful_stuff(move)
-        return roller_output, msg_output, help_output
-
-    def print_a_move(self, move, skill, skill_level):
-        roller, msg, help_ = self.make_a_move(
-            move=move, skill=skill, skill_level=skill_level
-        )
-        print()
-        print(roller)
-        print(msg)
-        pp(help_, width=120)
-        print()
-
     def act_under_pressure(self):
         move = "act_under_pressure"
         skill = "cool"
@@ -256,6 +233,47 @@ class Character(object):
         self.make_me_a_haven()
         self.get_me_some_gear()
 
+    def make_a_move(self, move: str, skill: str, skill_level: int) -> (str, str, dict):
+        result, roller_output = self.roller(skill, skill_level).main()
+        msg_output = self.get_move_info(result, move)
+        help_output = self.show_helpful_stuff(move)
+        return roller_output, msg_output, help_output
+
+    def get_move_info(self, score: [int, None], move: str):
+        if self.unstable_injury:
+            self.harm += 1
+            print(
+                f"Damn this unstable wound! My harm is now {self.harm}!\nAnd it's getting worse!\n"
+            )
+        if score is None:
+            return basic_moves[move]["msg"]
+        if score < 7:
+            self.experience += 1
+            if self.experience >= 5:
+                self.level_up()
+                self.experience = 0
+            return basic_moves[move]["miss_msg"]
+        elif 7 <= score < 10:
+            return basic_moves[move]["hit_msg"]
+        elif 10 <= score < 12:
+            return basic_moves[move]["big_hit_msg"]
+        elif 12 <= score:
+            return basic_moves[move]["adv_hit_msg"]
+
+    def print_a_move(self, move, skill, skill_level):
+        roller, msg, help_ = self.make_a_move(
+            move=move, skill=skill, skill_level=skill_level
+        )
+        print()
+        print(roller)
+        print(msg)
+        pp(help_, width=120)
+        print()
+
+    def show_helpful_stuff(self, move: str):
+        # To be overwritten in child class
+        pass
+
     def show_me_the_moves(self):
         # To be overwritten in child class
         pass
@@ -279,39 +297,6 @@ class Character(object):
     def level_up(self):
         # TODO: Implement this.
         pass
-
-    def set_skill_levels(self):
-        for skill in self.skills:
-            if skill == "charm":
-                while True:
-                    level = get_int_input(skill + " level?")
-                    self.charm = level
-                    if self._charm is not None:
-                        break
-            elif skill == "cool":
-                while True:
-                    level = get_int_input(skill + " level?")
-                    self.cool = level
-                    if self.cool is not None:
-                        break
-            elif skill == "sharp":
-                while True:
-                    level = get_int_input(skill + " level?")
-                    self.sharp = level
-                    if self.sharp is not None:
-                        break
-            elif skill == "tough":
-                while True:
-                    level = get_int_input(skill + " level?")
-                    self.tough = level
-                    if self.tough is not None:
-                        break
-            elif skill == "weird":
-                while True:
-                    level = get_int_input(skill + " level?")
-                    self.weird = level
-                    if self.weird is not None:
-                        break
 
 
 if __name__ == "__main__":
