@@ -88,3 +88,22 @@ class Expert(Character):
             },
             depth=1,
         )
+
+    def show_helpful_stuff(self, move: str):
+        output = {}
+        move_keys = [int(key) for key in self.info["keys"]["moves"][move]]
+        for move_key in move_keys:
+            if move_key in self.moves:
+                title, _, description = self.info["moves"][str(move_key)].partition(":")
+                output[title] = description
+        if self.info["keys"]["haven"]:
+            haven_keys = [int(key) for key in self.info["keys"]["haven"][move]]
+            for haven_key in haven_keys:
+                if haven_key in self.haven:
+                    title, _, description = self.info["haven"][str(haven_key)].partition(":")
+                    output[title] = description
+        if not output:
+            output = (
+                "You don't have any Expert moves or Haven options to help with this."
+            )
+        return output
